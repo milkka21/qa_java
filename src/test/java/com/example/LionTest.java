@@ -46,11 +46,14 @@ public class LionTest {
     }
         @Test
         public void doesHaveManeThrowsExceptionTest() {
+            String textException = "Используйте допустимые значения пола животного - самец или самка";
+            Exception exception = null;
             try {
                 Lion lion = new Lion("Котик", feline);
-            } catch (Exception exception) {
-                String textException = "Используйте допустимые значения пола животного - самец или самка";
-                Assert.assertEquals(textException, exception.getMessage());
+            } catch (Exception exceptionText) {
+                exception = exceptionText;
             }
+            Assert.assertNotNull("Ошибка не была получена", exception);
+            Assert.assertEquals(textException, exception.getMessage());
     }
 }
